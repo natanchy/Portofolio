@@ -83,7 +83,7 @@ body {
   flex-wrap: wrap;
   overflow: hidden;
 }
-
+    
 .hero .content {
   flex: 1;
   min-width: 100px;
