@@ -86,7 +86,7 @@ body {
 
 .hero .content {
   flex: 1;
-  min-width: 300px;
+  min-width: 100px;
   padding: 2rem 0;
   position: relative;
   z-index: 2;
@@ -102,7 +102,7 @@ body {
   transform: scale(0.8);
   animation: zoomIn 1s ease forwards, float 2s ease-in-out infinite;
   animation-delay: 0.5s;
-  margin: 0 auto;
+  margin-right: 5vh;
   position: relative;
   z-index: 2;
 }
@@ -202,7 +202,7 @@ body {
 .hero .content .cta {
   margin-top: 1rem;
   display: inline-block;
-  padding: 1rem 3rem;
+  padding: 1rem 4rem;
   font-size: 1.4rem;
   color: #000000;
   background-color: rgba(255, 255, 255, 0.9);
@@ -265,22 +265,25 @@ body {
 }
 
 .about h2,
-.contact h2 {
+.contact h2,
+.sertif h2 {
   text-align: center;
   font-size: 2.5rem;
-  margin-bottom: 3rem;
+  margin: 0;
+  margin-top: 0.4rem;
   color: #000000;
+  text-decoration: underline;
 }
 
 .about .row {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 2rem;
+  gap: 1rem;
 }
 
 .about .row .about-img {
-  flex: 1 1 40rem;
+  flex: 1 1 30rem;
   display: flex;
   justify-content: center;
 }
@@ -348,11 +351,11 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 2rem;
+  margin: 1rem;
   text-align: center;
-  max-width: 500px;
+  max-width: 300px;
   background: rgba(255, 255, 255, 0.1);
-  padding: 2rem;
+  padding: 1rem;
   border-radius: 1rem;
   backdrop-filter: blur(10px);
 }
@@ -360,8 +363,8 @@ body {
 .sertif .row .sertif-card img {
   width: 100%;
   height: auto;
-  max-width: 500px;
-  max-height: 500px;
+  max-width: 400px;
+  max-height: 400px;
   object-fit: cover;
   border-radius: 5%;
   box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.5);
@@ -1324,7 +1327,7 @@ footer {
     width: 90%;
     max-width: 280px;
     height: 280px; /* Tinggi sama dengan lebar */
-    object-fit: cover; /* Penting: ini yang bikin tidak gepeng */
+    object-fit: cover;
   }
 
   .about .row .content p {
