@@ -1,0 +1,710 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  text-decoration: none;
+}
+
+body {
+  background-color: #0a0a0a;
+}
+
+/* navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 8%;
+  background-color: #0a0a0a;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+.logo span {
+  color: #ffb400;
+}
+
+.navbar .navbar-nav {
+  display: flex;
+}
+
+.navbar .navbar-nav a {
+  font-family: sans-serif;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.7rem;
+  margin: 0 2.5rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+ 
+.navbar .navbar-nav a:hover {
+  color: #ffffff;
+}
+
+.navbar .navbar-nav a::after {
+  content: "";
+  display: block;
+  padding-bottom: 0.2rem;
+  transform: scaleX(0);
+  transition: 0.2s linear;
+}
+
+.navbar .navbar-nav a:hover::after {
+  transform: scaleX(1);
+}
+
+.btn-enquire {
+  border: 1px solid #ffb400; 
+  color: #ffb400;
+  padding: 0.6rem 1.5rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-enquire:hover {
+  background-color: #ffb400;
+  color: #000; 
+}
+
+.hero {
+  min-height: 125vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #0a0a0a;
+  padding: 0 8%;
+  overflow: hidden;
+  position: relative;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 0rem;
+}
+
+.hero .content {
+  z-index: 2;
+  max-width: 600px;
+}
+
+.hero .content .fade-in {
+  color: #ffb400;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.hero .content h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(5rem, 8vw, 7rem);
+  color: #ffffff;
+  line-height: 0.9;
+  text-transform: uppercase;
+  margin: 0;
+  letter-spacing: -3px;
+}
+
+.hero .content h1::after {
+  content: "";
+  display: block;
+  width: 400px;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.2);
+  margin-top: 1.5rem;
+}
+
+.hero .content h1 span {
+  color: #ffffff;
+  padding: 0;
+  display: block;
+}
+
+.hero .content p {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1.1rem;
+  max-width: 400px;
+  margin-top: 2rem;
+  line-height: 1.6;
+  font-family: 'Poppins', sans-serif;
+}
+
+.hero .hero-img {
+  width: 400px;
+  height: 500px;
+  object-fit: cover;
+  filter: grayscale(100%) brightness(0.8);
+  border: 1px solid rgba(255, 255, 255, 0.5); 
+  border-radius: 0; 
+  transition: 0.5s ease;
+}
+
+.hero .hero-img:hover {
+  filter: grayscale(0%); 
+  transform: scale(1.02);
+}
+
+.hero .content .cta {
+  margin-top: 2rem;
+  display: inline-block;
+  padding: 0rem 0rem;
+  color: #ffffff;
+  background: transparent;
+  font-weight: 200;
+  letter-spacing: 1px;
+  max-width: 400px;
+  opacity: 0.7;
+}
+
+.hero::before {
+  content: "NATAN CAHYO";
+  position: absolute;
+  padding: 2rem;
+  font-size: 15rem;
+  font-family: 'Playfair Display';
+  color: rgba(255, 255, 255, 0.03);
+  top: 40%;
+  left: 5%;
+  transform: translateY(-50%);
+  z-index: 1;
+  pointer-events: none;
+}
+/* ========== JOURNEY SECTION - PERBAIKAN GRID ========== */
+
+.journey {
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0a0a0a;
+  padding: 5rem 8%;  /* ganti dari padding-left:15% jadi normal */
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+}
+
+/* Container utama dengan GRID yang rapi dan rata tengah */
+.journey-container {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 2rem;  /* tambah gap biar gak nempel */
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: center;
+}
+
+/* Bagian kiri - Tombol journey */
+.journey-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;  /* dari 50% jadi 100% */
+}
+
+/* Style tombol navigasi */
+.nav-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 1.5rem;  /* perkecil padding */
+  background: transparent !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);  /* dari 2px jadi 1px */
+  color: rgba(255, 255, 255, 0.3);
+  transition: all 0.4s ease;
+  cursor: pointer;
+  text-align: left;
+  font-family: monospace;
+  font-size: 1.1rem;  /* perkecil font desktop */
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  width: 100%;
+}
+
+.nav-box:hover {
+  border: 1px solid rgba(255, 180, 0, 0.3);
+  color: rgba(255, 180, 0, 0.8);
+}
+
+.nav-box.active {
+  border: 1px solid #ffb400;
+  color: #ffb400;
+  box-shadow: 0 0 20px rgba(255, 180, 0, 0.1);
+}
+
+.nav-box .sub-text {
+  font-size: 0.7rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  text-transform: capitalize;
+  margin-top: 0.3rem;
+  color: rgba(255, 255, 255, 0.3);
+  transition: 0.3s;
+}
+
+.nav-box:hover .sub-text,
+.nav-box.active .sub-text {
+  color: #ffb400;
+  opacity: 1;
+}
+
+/* Bagian kanan - Konten utama */
+.journey-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem;  /* dari 10rem jadi 1rem */
+}
+
+.label-faded {
+  color: #ffb400;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+  opacity: 0.8;
+}
+
+.title-display {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 4rem);  /* perkecil di mobile */
+  color: #ffffff;
+  line-height: 1;
+  text-transform: uppercase;
+  margin: 0;
+  letter-spacing: -1px;
+}
+
+.title-display::after {
+  content: "";
+  display: block;
+  width: 80px;  /* dari 500px jadi 80px */
+  height: 2px;
+  background-color: #ffb400;
+  margin-top: 1.5rem;
+}
+
+.description {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.9rem;  /* perkecil */
+  max-width: 400px;
+  margin-top: 1.5rem;
+  line-height: 1.6;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ========== RESPONSIVE - PERBAIKAN UNTUK HP ========== */
+
+/* Tablet & HP Landscape */
+@media (max-width: 968px) {
+  .journey {
+    padding: 4rem 5%;
+    min-height: auto;
+  }
+  
+  .journey-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .journey-nav {
+    order: 2;
+    width: 100%;
+    gap: 1rem;
+  }
+  
+  .journey-main {
+    order: 1;
+    text-align: center;
+    align-items: center;
+    padding: 0;
+  }
+  
+  .title-display::after {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .description {
+    text-align: center;
+    max-width: 100%;
+  }
+  
+  .hero {
+    flex-direction: column-reverse;
+    text-align: center;
+    padding-top: 8rem;
+  }
+  
+  .hero .content h1::after {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+  }
+  
+  .hero .content .cta {
+    text-align: center;
+  }
+}
+
+/* HP Kecil */
+@media (max-width: 768px) {
+  .navbar .navbar-nav a {
+    margin: 0 0.8rem;
+    font-size: 0.55rem;
+  }
+  
+  .hero .hero-img {
+    width: 260px;
+    height: 340px;
+  }
+  
+  .nav-box {
+    padding: 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .nav-box .sub-text {
+    font-size: 0.6rem;
+  }
+  
+  .hero .content h1 {
+    font-size: clamp(3rem, 10vw, 5rem);
+  }
+}
+
+/* HP sangat kecil */
+@media (max-width: 576px) {
+  .navbar {
+    padding: 1rem 5%;
+  }
+  
+  .navbar .navbar-nav {
+    display: none;  /* menu bisa pake hamburger nanti */
+  }
+  
+  .journey {
+    padding: 3rem 5%;
+  }
+  
+  .nav-box {
+    padding: 0.9rem;
+    font-size: 0.8rem;
+  }
+  
+  .label-faded {
+    font-size: 0.65rem;
+    letter-spacing: 3px;
+  }
+  
+  .title-display {
+    font-size: 1.8rem;
+  }
+  
+  .description {
+    font-size: 0.8rem;
+  }
+}
+
+/* ========== CERTIFICATE SECTION ========== */
+.certificate {
+  padding: 5rem 8%;
+  background-color: #0a0a0a;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.certificate-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.cert-label {
+  color: #ffb400;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  opacity: 0.8;
+}
+
+.cert-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  color: #ffffff;
+  margin: 0.5rem 0 1rem;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+}
+
+.cert-title::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 2px;
+  background-color: #ffb400;
+  margin: 1rem auto 0;
+}
+
+.cert-subtitle {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.9rem;
+  max-width: 600px;
+  margin: 1rem auto 0;
+  line-height: 1.6;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Grid Layout - 3 kolom, lebih lebar */
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.8rem;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+/* Certificate Card */
+.cert-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 1.2rem;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.cert-card:hover {
+  border-color: rgba(255, 180, 0, 0.4);
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Foto Sertifikat */
+.cert-image {
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  background: #1a1a1a;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+}
+
+.cert-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.3s ease;
+}
+
+.cert-card:hover .cert-image img {
+  transform: scale(1.03);
+}
+
+/* Content */
+.cert-card-content {
+  flex: 1;
+}
+
+.cert-card-content h3 {
+  color: #ffffff;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.5px;
+  line-height: 1.3;
+}
+
+.cert-position {
+  color: #ffb400;
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 0.4rem;
+}
+
+.cert-name {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-bottom: 0.2rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+.cert-role {
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 0.7rem;
+  line-height: 1.4;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .cert-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    max-width: 800px;
+  }
+}
+
+@media (max-width: 640px) {
+  .certificate {
+    padding: 3rem 5%;
+  }
+  
+  .cert-grid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+  
+  .cert-card {
+    padding: 1rem;
+  }
+  
+  .cert-image {
+    height: 180px;
+  }
+}
+
+
+/* Footer */
+footer {
+  background-color: #0a0a0a;
+  padding: 3rem 8% 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-container {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.footer-container h3 {
+  font-family: 'Playfair Display', serif;
+  color: #fff;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.footer-container p {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.9rem;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 1.5rem 0;
+}
+
+.social-icons a {
+  color: rgba(255, 255, 255, 0.5);
+  transition: 0.3s;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.social-icons a:hover {
+  color: #ffb400;
+}
+
+.copyright {
+  font-size: 0.75rem;
+  margin-top: 1rem;
+  opacity: 0.5;
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+  .journey-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .journey-nav {
+    order: 2;
+  }
+  
+  .journey-main {
+    order: 1;
+    text-align: center;
+    align-items: center;
+  }
+  
+  .title-display::after {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .description {
+    text-align: center;
+  }
+  
+  .hero {
+    flex-direction: column-reverse;
+    text-align: center;
+    padding-top: 8rem;
+  }
+  
+  .hero .content h1::after {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .hero .content .cta {
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar .navbar-nav a {
+    margin: 0 1rem;
+    font-size: 0.6rem;
+  }
+  
+  .hero .hero-img {
+    width: 280px;
+    height: 360px;
+  }
+  
+  .journey {
+    padding: 4rem 5%;
+  }
+}
+
+@media (max-width: 576px) {
+  .navbar {
+    padding: 1rem 5%;
+  }
+  
+  .navbar .navbar-nav {
+    display: none;
+  }
+  
+  .nav-box {
+    padding: 1.5rem;
+    font-size: 1rem;
+  }
+}
