@@ -1,148 +1,368 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Natan C</title>
-    <!-- Feather Icons -->
-    <script src="https://unpkg.com/feather-icons"></script>
-    <!-- My Style-->
-    <link rel="stylesheet" href="style.css" />
-    <link rel="icon" href="img/logo N.png" />
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+
-    Display:wght@900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-  </head>
-  <body>
-    <!-- navbar start -->
-    <nav class="navbar">
-      <div class="logo">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Natan Cahyo | Portfolio</title>
+  <meta name="description"
+    content="Personal portfolio of Natan Cahyo, Informatics student specializing in Web Development and Network Security." />
+  <!-- Feather Icons -->
+  <script src="https://unpkg.com/feather-icons"></script>
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;900&family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="img/logo N.png" />
+</head>
+
+<body>
+  <!-- navbar start -->
+  <nav class="navbar">
+    <div class="logo">
       Natannc<span>.</span>
-      </div>
-      <div class="navbar-nav">
-        <a href="#">HOME</a>
-        <a href="#about">JOURNEY</a>
-        <a href="#sertif">CERTIFICATION</a>
-        <a href="#contact">CONTACT</a>
-      </div>
-      <div class="nav-button">
-      <a href="#" class="btn-enquire">ENQUIRE</a>
-      </div>
-    </nav>
-    <!-- navbar end -->
+    </div>
+    <div class="navbar-nav">
+      <a href="#home">HOME</a>
+      <a href="#about">JOURNEY</a>
+      <a href="#projects">PROJECTS</a>
+      <a href="#sertif">CERTIFICATIONS</a>
+      <a href="#contact">CONTACT</a>
+    </div>
+    <div class="nav-extra">
+      <a href="#contact" class="btn-enquire">ENQUIRE</a>
+      <button id="hamburger-menu" aria-label="Toggle navigation menu" class="hamburger-btn">
+        <i data-feather="menu"></i>
+      </button>
+    </div>
+  </nav>
+  <!-- navbar end -->
 
-    <!-- Hero Section start -->
-    <section class="hero" id="home">
-      <main class="content">
-        <p class="fade-in">Web Dev | Network Security</p>
-        <h1 class="typing">Natan Cahyo.</h1>
-        <a class="cta">An Informatics student. Eager to learn, build, and contribute to creating secure digital solutions.</a
-        >
-      </main>
-      <img src="img/Foto.JPG" alt="foto" class="hero-img" />
-    </section>
-    <!-- Hero Section end -->
+  <!-- Hero Section start -->
+  <section class="hero" id="home">
+    <div class="hero-bg-blobs">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+    </div>
+    <main class="content">
+      <p class="fade-in">Web Dev | Network Security</p>
+      <h1 class="typing">Natan Cahyo.</h1>
+      <p class="cta-text">An Informatics student. Eager to learn, build, and contribute to creating secure digital
+        solutions.</p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn-primary">View Projects <i data-feather="arrow-right"></i></a>
+        <a href="#contact" class="btn-secondary">Let's Connect</a>
+      </div>
+    </main>
+    <div class="hero-img-container">
+      <img src="img/aku.jpeg" alt="Natan Cahyo Photo" class="hero-img" />
+      <div class="img-glow"></div>
+    </div>
+  </section>
+  <!-- Hero Section end -->
 
-    <!-- About section start-->
-    <section class="journey" id="about">
+  <!-- About/Journey section start-->
+  <section class="journey" id="about">
+    <div class="journey-container">
       <div class="journey-nav">
-        <button class="nav-box active"> SMK PGRI 1 TAYU 
-        <span class="sub-text">Teknik Komputer Jaringan</span>
+        <span class="label-faded">Where I've Been</span>
+        <button class="nav-box active" data-tab="udinus" id="tab-btn-udinus">
+          UNIVERSITAS DIAN NUSWANTORO
+          <span class="sub-text">Teknik Informatika (S1)</span>
         </button>
-
-        <button class="nav-box active">UNIVERSITAS DIAN NUSWANTORO
-        <span class="sub-text">Teknik Informatika</span>
+        <button class="nav-box" data-tab="smk" id="tab-btn-smk">
+          SMK PGRI 1 TAYU
+          <span class="sub-text">Teknik Komputer Jaringan (TKJ)</span>
         </button>
       </div>
 
-    <div class="journey-main">
-      <span class="label-faded">Journey</span>
-      <h1 class="title-display">Expanding the Network</h1>
-      <p class="description">
-        My tech journey started with a solid foundation in Computer and Network Engineering during vocational high school. Now, I am expanding my knowledge in Computer Science to explore the world of software development and programming.
+      <div class="journey-main" id="journey-content">
+        <span class="label-faded">Journey</span>
+        <h2 class="title-display" id="journey-title">Expanding the Network</h2>
+        <div class="journey-details">
+          <span class="journey-duration" id="journey-duration">2024 - Present</span>
+          <p class="description" id="journey-description">
+            Expanding my knowledge in Computer Science at Universitas Dian Nuswantoro. Actively diving deep into
+            programming, software engineering principles, web development frameworks, and database management, while
+            continuing my passion for networking and cybersecurity.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- About section end-->
+
+  <!-- Projects Section start -->
+  <section class="projects" id="projects">
+    <div class="projects-header">
+      <span class="projects-label">Featured Work</span>
+      <h2 class="projects-title">Projects</h2>
+      <div class="header-line"></div>
+      <p class="projects-subtitle">
+        A collection of projects showcasing my technical path in both application development and secure network
+        implementation.
       </p>
     </div>
 
-  </div>
-</section>
-<!-- About section end-->
- 
-<!-- Certificate section start -->
-<section class="certificate" id="sertif">
-  <div class="certificate-header">
-    <span class="cert-label">MY ACHIEVEMENTS</span>
-    <h2 class="cert-title">Certification</h2>
-    <p class="cert-subtitle">A collection of steps I’ve taken to validate my skills outside the classroom. These certifications represent my dedication to mastering the fundamentals of networking, Linux systems, and tech communities</p>
-  </div>
-
-  <div class="cert-grid">
-    <!-- Card 1 -->
-    <div class="cert-card">
-      <div class="cert-image">
-        <img src="img/Sertif.png" alt="Sertifikat BTNG">
-      </div>
-      <div class="cert-card-content">
-        <h3>Basic Training for Next Generation</h3>
-        <p class="cert-position">Dian Nuswantoro Computer Club</p>
-        <p class="cert-name">Networking</p>
-        <p class="cert-role">2025</p>
-      </div>
+    <!-- Filter Buttons -->
+    <div class="project-filter">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="web">Web Dev</button>
+      <button class="filter-btn" data-filter="network">Network Security</button>
     </div>
 
-    <div class="cert-card">
-      <div class="cert-image">
-        <img src="img/aguna1.png" alt="Sertifikat aguna1">
-      </div>
-      <div class="cert-card-content">
-        <h3>Linux Fundamental Training</h3>
-        <p class="cert-position">Aguna Course</p>
-        <p class="cert-name">Linux Fundamental</p>
-        <p class="cert-role">2025</p>
-      </div>
-    </div>
-    
-    <div class="cert-card">
-      <div class="cert-image">
-        <img src="img/aguna2.png" alt="Sertifikat aguna2">
-      </div>
-      <div class="cert-card-content">
-        <h3>Network Fundamental</h3>
-        <p class="cert-position">Aguna Course</p>
-        <p class="cert-name">Network Fundamental</p>
-        <p class="cert-role">2025</p>
-      </div>
-    </div>
-    
-
-  </div>
-</section>
-
-<section class="journey" id="contact">
-  <div class="certificate-header">
-    <span class="cert-label">Soon</span>
-    <h2 class="cert-title">CONTACT</h2>
-    <p class="cert-subtitle">I’m always open to new learning opportunities, tech discussions, or junior-level collaborations. Let’s connect and grow together!</p>
-
-</section>
-
-<!-- Certificate section end -->
-    <footer>
-      <div class="footer-container">
-        <h3>Pixl by Natan</h3>
-        <p>Beginner Web Dev | Network Enthusiast</p>
-        <div class="social-icons">
-          <a href="https://github.com/natanchy" target="_blank"
-            ><i data-feather="GitHub">GitHub</i></a
-          >
-          <a href="https://www.linkedin.com/in/natan-cahyo" target="_blank"
-            ><i data-feather="LinkedIn">LinkedIn</i></a
-          >
-          <a href="https://www.instagram.com/xnathz_" target="_blank"
-            ><i data-feather="Instagram">Instagram</i></a
-          >
+    <!-- Projects Grid -->
+    <div class="projects-grid">
+      <!-- Project Card 1: Web Dev -->
+      <div class="project-card" data-category="web">
+        <div class="project-media">
+          <div class="project-icon-wrapper">
+            <i data-feather="globe" class="project-icon"></i>
+          </div>
         </div>
-        <p class="copyright">© 2025 Natan Cahyo. All Rights Reserved.</p>
+        <div class="project-info">
+          <span class="project-tag">Web Dev</span>
+          <h3>Dynamic Portfolio Website</h3>
+          <p>A premium responsive personal portfolio built with HTML, vanilla CSS, and JavaScript. Featuring
+            glassmorphism, fluid animations, and high performance.</p>
+          <div class="project-tech">
+            <span>HTML5</span>
+            <span>CSS3</span>
+            <span>JavaScript</span>
+            <span>Feather Icons</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/natanchy/Portofolio" target="_blank" class="proj-link"><i
+                data-feather="github"></i> Code</a>
+            <a href="#" class="proj-link"><i data-feather="external-link"></i> Live Demo</a>
+          </div>
+        </div>
       </div>
-    </footer>
-  </body>
+
+      <!-- Project Card 2: Network Sec -->
+      <div class="project-card" data-category="network">
+        <div class="project-media">
+          <div class="project-icon-wrapper">
+            <i data-feather="shield" class="project-icon"></i>
+          </div>
+        </div>
+        <div class="project-info">
+          <span class="project-tag">Network Security</span>
+          <h3>Secure Campus Network</h3>
+          <p>Designed and simulated a secure corporate network infrastructure with segmented VLANs, OSPF routing, access
+            control lists (ACLs), and firewall policy configurations using Cisco Packet Tracer.</p>
+          <div class="project-tech">
+            <span>Cisco Packet Tracer</span>
+            <span>VLANs</span>
+            <span>ACLs</span>
+            <span>OSPF</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="proj-link"><i data-feather="file-text"></i> Topology Report</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project Card 3: Network Sec -->
+      <div class="project-card" data-category="network">
+        <div class="project-media">
+          <div class="project-icon-wrapper">
+            <i data-feather="terminal" class="project-icon"></i>
+          </div>
+        </div>
+        <div class="project-info">
+          <span class="project-tag">Network Security</span>
+          <h3>Linux Server Automation & Hardening</h3>
+          <p>A set of automated shell scripts to configure, secure, and monitor Ubuntu server deployments, disabling
+            insecure services, enabling UFW firewall, and setting up fail2ban protection.</p>
+          <div class="project-tech">
+            <span>Linux</span>
+            <span>Bash Scripting</span>
+            <span>UFW Firewall</span>
+            <span>Fail2Ban</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/natanchy" target="_blank" class="proj-link"><i data-feather="github"></i>
+              Repository</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project Card 4: Web Dev -->
+      <div class="project-card" data-category="web">
+        <div class="project-media">
+          <div class="project-icon-wrapper">
+            <i data-feather="server" class="project-icon"></i>
+          </div>
+        </div>
+        <div class="project-info">
+          <span class="project-tag">Web Dev</span>
+          <h3>Local TV Streaming Portal</h3>
+          <p>Developed a responsive streaming web application with custom video player integration, allowing localized
+            IPTV broadcasting for school community networks.</p>
+          <div class="project-tech">
+            <span>HTML5</span>
+            <span>CSS Grid</span>
+            <span>VideoJS</span>
+            <span>PHP</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/natanchy" target="_blank" class="proj-link"><i data-feather="github"></i>
+              Repository</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Projects Section end -->
+
+  <!-- Certificate section start -->
+  <section class="certificate" id="sertif">
+    <div class="certificate-header">
+      <span class="cert-label">My Achievements</span>
+      <h2 class="cert-title">Certifications</h2>
+      <div class="header-line"></div>
+      <p class="cert-subtitle">A collection of steps I’ve taken to validate my skills outside the classroom. These
+        certifications represent my dedication to mastering the fundamentals of networking, Linux systems, and tech
+        communities.</p>
+    </div>
+
+    <div class="cert-grid">
+      <!-- Card 1 -->
+      <div class="cert-card">
+        <div class="cert-image">
+          <img src="img/Sertif.png" alt="Sertifikat BTNG">
+        </div>
+        <div class="cert-card-content">
+          <p class="cert-position">Dian Nuswantoro Computer Club</p>
+          <h3>Basic Training for Next Generation</h3>
+          <p class="cert-name">Networking Specialization</p>
+          <p class="cert-role">2025</p>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="cert-card">
+        <div class="cert-image">
+          <img src="img/aguna1.png" alt="Sertifikat aguna1">
+        </div>
+        <div class="cert-card-content">
+          <p class="cert-position">Aguna Course</p>
+          <h3>Linux Fundamental Training</h3>
+          <p class="cert-name">Linux Administration</p>
+          <p class="cert-role">2025</p>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="cert-card">
+        <div class="cert-image">
+          <img src="img/aguna2.png" alt="Sertifikat aguna2">
+        </div>
+        <div class="cert-card-content">
+          <p class="cert-position">Aguna Course</p>
+          <h3>Network Fundamental</h3>
+          <p class="cert-name">Routing & Switching Essentials</p>
+          <p class="cert-role">2025</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Certificate section end -->
+
+  <!-- Contact section start -->
+  <section class="contact" id="contact">
+    <div class="contact-header">
+      <span class="contact-label">Get in Touch</span>
+      <h2 class="contact-title">Contact</h2>
+      <div class="header-line"></div>
+      <p class="contact-subtitle">I’m always open to new learning opportunities, tech discussions, or junior-level
+        collaborations. Let’s connect and grow together!</p>
+    </div>
+
+    <div class="contact-container">
+      <!-- Contact details -->
+      <div class="contact-info">
+        <div class="info-card">
+          <div class="info-icon">
+            <i data-feather="mail"></i>
+          </div>
+          <div class="info-content">
+            <h3>Email</h3>
+            <p><a href="mailto:natancahyo@example.com">natancahyo9@gmail.com</a></p>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="info-icon">
+            <i data-feather="map-pin"></i>
+          </div>
+          <div class="info-content">
+            <h3>Location</h3>
+            <p>Semarang, Central Java, Indonesia</p>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="info-icon">
+            <i data-feather="message-circle"></i>
+          </div>
+          <div class="info-content">
+            <h3>Social Connect</h3>
+            <p>DM via Instagram or LinkedIn</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact form -->
+      <form class="contact-form" action="#" method="POST" id="contact-form">
+        <div class="form-row">
+          <div class="input-group">
+            <input type="text" id="contact-name" name="name" required placeholder=" " />
+            <label for="contact-name">Name</label>
+          </div>
+          <div class="input-group">
+            <input type="email" id="contact-email" name="email" required placeholder=" " />
+            <label for="contact-email">Email</label>
+          </div>
+        </div>
+        <div class="input-group">
+          <input type="text" id="contact-subject" name="subject" required placeholder=" " />
+          <label for="contact-subject">Subject</label>
+        </div>
+        <div class="input-group">
+          <textarea id="contact-message" name="message" required placeholder=" " rows="5"></textarea>
+          <label for="contact-message">Your Message</label>
+        </div>
+        <button type="submit" class="btn-submit">
+          Send Message <i data-feather="send"></i>
+        </button>
+      </form>
+    </div>
+  </section>
+  <!-- Contact section end -->
+
+  <!-- Footer start -->
+  <footer>
+    <div class="footer-container">
+      <h3>Pixl by Natan</h3>
+      <p>Beginner Web Dev | Network Security Enthusiast</p>
+      <div class="social-icons">
+        <a href="https://github.com/natanchy" target="_blank" aria-label="GitHub">
+          <i data-feather="github"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/natan-cahyo" target="_blank" aria-label="LinkedIn">
+          <i data-feather="linkedin"></i>
+        </a>
+        <a href="https://www.instagram.com/xnathz_" target="_blank" aria-label="Instagram">
+          <i data-feather="instagram"></i>
+        </a>
+      </div>
+      <p class="copyright">© 2025 Natan Cahyo. All Rights Reserved.</p>
+    </div>
+  </footer>
+  <!-- Footer end -->
+  <script src="script.js"></script>
+</body>
+
 </html>
