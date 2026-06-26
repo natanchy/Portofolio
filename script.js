@@ -174,5 +174,98 @@ document.addEventListener("DOMContentLoaded", () => {
     el.classList.add("fade-on-scroll");
     observer.observe(el);
   });
+
+  // Contact Form AJAX Submission
+  const contactForm = document.querySelector("#contact-form");
+  if (contactForm) {
+    contactForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      
+      const submitBtn = contactForm.querySelector(".btn-submit");
+      const originalBtnText = submitBtn.innerHTML;
+      
+      // Ubah button state menjadi loading
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `Sending... <i data-feather="loader" class="animate-spin"></i>`;
+      if (typeof feather !== "undefined") {
+        feather.replace();
+      }
+      
+      const formData = {
+        name: document.querySelector("#contact-name").value,
+        email: document.querySelector("#contact-email").value,
+        subject: document.querySelector("#contact-subject").value,
+        message: document.querySelector("#contact-message").value,
+      };
+      
+      try {
+        const response = await fetch("https://formsubmit.co/ajax/natancahyo9@gmail.com", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify(formData)
+        });
+        
+        const result = await response.json();
+        console.log("FormSubmit response:", result);
+        
+        if (response.ok && (result.success === "true" || result.success === true)) {
+          showToast("Message sent successfully!", "success");
+          contactForm.reset();
+        } else {
+          const msg = result.message || "Failed to send message. Please try again.";
+          showToast(msg, "error");
+        }
+      } catch (error) {
+        console.error("Error sending form:", error);
+        showToast("An error occurred. Please try again later.", "error");
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnText;
+        if (typeof feather !== "undefined") {
+          feather.replace();
+        }
+      }
+    });
+  }
+
+  // Toast Function
+  function showToast(message, type) {
+    let container = document.querySelector(".toast-container");
+    if (!container) {
+      container = document.createElement("div");
+      container.className = "toast-container";
+      document.body.appendChild(container);
+    }
+    
+    const toast = document.createElement("div");
+    toast.className = `toast toast-${type}`;
+    
+    const iconName = type === "success" ? "check-circle" : "alert-circle";
+    toast.innerHTML = `
+      <span class="toast-icon"><i data-feather="${iconName}"></i></span>
+      <span class="toast-message">${message}</span>
+    `;
+    
+    container.appendChild(toast);
+    if (typeof feather !== "undefined") {
+      feather.replace();
+    }
+    
+    // Animate in
+    setTimeout(() => {
+      toast.classList.add("show");
+    }, 10);
+    
+    // Auto remove after 5 seconds
+    setTimeout(() => {
+      toast.classList.remove("show");
+      setTimeout(() => {
+        toast.remove();
+      }, 400);
+    }, 5000);
+  }
 });
 
