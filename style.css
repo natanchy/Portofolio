@@ -7,40 +7,45 @@
 
 :root {
   /* Colors - Cyberpunk Slate/Indigo Dark */
-  --bg-primary: #070610;
-  --bg-secondary: #0d0c1b;
+  --bg-primary: #060510;
+  --bg-secondary: #0b0a1a;
   
   /* Neon Palette */
-  --accent-cyber: #00f2fe;      /* Neon Cyan */
-  --accent-cyber-alt: #ec4899;  /* Neon Hot Pink */
+  --accent-cyber: #00f2fe;        /* Neon Cyan */
+  --accent-cyber-alt: #ec4899;    /* Neon Hot Pink */
   --accent-cyber-purple: #a855f7; /* Neon Violet */
+  --accent-emerald: #10f5a0;      /* Neon Emerald — warna ke-3 */
   
-  /* Variables Mapping (Keeping HTML classes and rules intact) */
+  /* Variables Mapping */
   --accent-gold: var(--accent-cyber);
   --accent-gold-dark: var(--accent-cyber-alt);
   
-  /* Subtle default glows (Seimbang & halus agar tetap profesional dan teks terbaca) */
-  --accent-gold-glow: rgba(0, 242, 254, 0.08);
-  --neon-pink-glow: rgba(236, 72, 153, 0.08);
+  /* Subtle default glows */
+  --accent-gold-glow: rgba(0, 242, 254, 0.10);
+  --neon-pink-glow: rgba(236, 72, 153, 0.10);
+  --neon-emerald-glow: rgba(16, 245, 160, 0.10);
   
-  /* Strong hover glows (Mencolok khusus saat hover) */
+  /* Strong hover glows */
   --neon-cyan-hover-glow: rgba(0, 242, 254, 0.45);
   --neon-pink-hover-glow: rgba(236, 72, 153, 0.45);
+  --neon-emerald-hover-glow: rgba(16, 245, 160, 0.45);
   
   --text-primary: #f3f4f6;
   --text-secondary: #9ca3af;
   --text-faded: #6b7280;
   
-  /* Glassmorphism Tinted Violet */
-  --border-light: rgba(168, 85, 247, 0.12);
-  --border-glow: rgba(0, 242, 254, 0.25);
-  --glass-bg: rgba(15, 13, 34, 0.55);
-  --glass-border: rgba(255, 255, 255, 0.05);
+  /* Glassmorphism — diperkuat */
+  --border-light: rgba(168, 85, 247, 0.15);
+  --border-glow: rgba(0, 242, 254, 0.30);
+  --glass-bg: rgba(12, 10, 28, 0.60);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-blur: blur(18px);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.40);
   
   /* Gradients */
   --gradient-gold: linear-gradient(135deg, #00f2fe 0%, #ec4899 100%);
-  --gradient-dark: linear-gradient(180deg, #070610 0%, #0d0c1b 100%);
-  --gradient-card: linear-gradient(145deg, rgba(20, 18, 45, 0.8) 0%, rgba(10, 9, 25, 0.8) 100%);
+  --gradient-dark: linear-gradient(180deg, #060510 0%, #0b0a1a 100%);
+  --gradient-card: linear-gradient(145deg, rgba(18, 15, 42, 0.75) 0%, rgba(8, 7, 20, 0.75) 100%);
   
   /* Transitions */
   --transition-fast: 0.2s ease;
@@ -66,6 +71,12 @@ html {
 
 body {
   background-color: var(--bg-primary);
+  /* Multi-color radial gradient di background — tidak monoton */
+  background-image:
+    radial-gradient(ellipse 80% 50% at 10% 20%,  rgba(168, 85, 247, 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 90% 80%,  rgba(0, 242, 254, 0.05) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 35% at 50% 110%, rgba(16, 245, 160, 0.04) 0%, transparent 50%);
+  background-attachment: fixed;
   color: var(--text-primary);
   font-family: 'Poppins', sans-serif;
   overflow-x: hidden;
@@ -395,6 +406,27 @@ body {
   padding: 7rem 8%;
   background-color: var(--bg-secondary);
   border-bottom: 1px solid var(--border-light);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ambient blob untuk Journey — cyan */
+.journey::before {
+  content: '';
+  position: absolute;
+  bottom: -80px;
+  right: -80px;
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(0, 242, 254, 0.05) 0%, transparent 65%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.journey .journey-container {
+  position: relative;
+  z-index: 1;
 }
 
 .journey-container {
@@ -460,10 +492,12 @@ body {
 
 .journey-main {
   background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
   border: 1px solid var(--glass-border);
   padding: 3rem;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  border-radius: 16px;
+  box-shadow: var(--glass-shadow), inset 0 1px 0 rgba(255,255,255,0.06);
 }
 
 .title-display {
@@ -587,19 +621,21 @@ body {
 /* Project Card */
 .project-card {
   background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
   border: 1px solid var(--glass-border);
-  border-radius: 12px;
+  border-radius: 16px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   transition: var(--transition-normal);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--glass-shadow), inset 0 1px 0 rgba(255,255,255,0.05);
 }
 
 .project-card:hover {
   transform: translateY(-8px);
   border-color: var(--accent-cyber-alt);
-  box-shadow: 0 12px 30px var(--neon-pink-hover-glow);
+  box-shadow: 0 16px 40px var(--neon-pink-hover-glow), inset 0 1px 0 rgba(255,255,255,0.08);
 }
 
 .project-media {
@@ -720,6 +756,28 @@ body {
   padding: 7rem 8%;
   background-color: var(--bg-secondary);
   border-bottom: 1px solid var(--border-light);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ambient blob untuk Certifications — pink */
+.certificate::before {
+  content: '';
+  position: absolute;
+  top: -60px;
+  left: -100px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(236, 72, 153, 0.06) 0%, transparent 65%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.certificate .certificate-header,
+.certificate .cert-grid {
+  position: relative;
+  z-index: 1;
 }
 
 .certificate-header {
@@ -761,18 +819,20 @@ body {
 
 .cert-card {
   background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
   border: 1px solid var(--glass-border);
-  border-radius: 12px;
+  border-radius: 16px;
   overflow: hidden;
   padding: 1.2rem;
   transition: var(--transition-normal);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--glass-shadow), inset 0 1px 0 rgba(255,255,255,0.05);
 }
 
 .cert-card:hover {
   transform: translateY(-8px);
   border-color: var(--border-glow);
-  box-shadow: 0 12px 30px var(--neon-cyan-hover-glow);
+  box-shadow: 0 16px 40px var(--neon-cyan-hover-glow), inset 0 1px 0 rgba(255,255,255,0.08);
 }
 
 .cert-image {
@@ -832,6 +892,183 @@ body {
 }
 
 /* ==========================================================================
+   Organizations Section
+   ========================================================================== */
+.organizations {
+  padding: 7rem 8%;
+  background-color: var(--bg-primary);
+  border-bottom: 1px solid var(--border-light);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ambient blobs untuk Organizations — warna emerald */
+.organizations::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  right: -80px;
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, rgba(16, 245, 160, 0.07) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.organizations::after {
+  content: '';
+  position: absolute;
+  bottom: -80px;
+  left: -60px;
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.07) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.organizations .organizations-header,
+.organizations .org-grid {
+  position: relative;
+  z-index: 1;
+}
+
+.organizations-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 3.5rem;
+}
+
+.org-label {
+  color: var(--accent-cyber);
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  font-family: 'Outfit', sans-serif;
+}
+
+.org-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  color: var(--text-primary);
+  font-weight: 800;
+  text-transform: uppercase;
+  margin: 0.5rem 0 1.5rem;
+}
+
+.org-subtitle {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.org-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.org-card {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  overflow: hidden;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  transition: var(--transition-normal);
+  box-shadow: var(--glass-shadow), inset 0 1px 0 rgba(255,255,255,0.05);
+}
+
+.org-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--accent-cyber-purple);
+  box-shadow: 0 16px 40px rgba(168, 85, 247, 0.30), inset 0 1px 0 rgba(255,255,255,0.08);
+}
+
+.org-card-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  background: rgba(168, 85, 247, 0.07);
+  border: 1px solid rgba(168, 85, 247, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--accent-cyber-purple);
+  transition: var(--transition-normal);
+}
+
+.org-card-icon svg {
+  width: 26px;
+  height: 26px;
+}
+
+.org-card:hover .org-card-icon {
+  background: var(--accent-cyber-purple);
+  color: #fff;
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.45);
+  transform: scale(1.08);
+}
+
+.org-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.org-tag {
+  color: var(--accent-cyber-purple);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  font-family: 'Outfit', sans-serif;
+}
+
+.org-card-content h3 {
+  color: var(--text-primary);
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-top: 0.15rem;
+}
+
+.org-role {
+  color: var(--accent-cyber);
+  font-size: 0.82rem;
+  font-weight: 600;
+  font-family: 'Outfit', sans-serif;
+  letter-spacing: 0.5px;
+}
+
+.org-desc {
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  line-height: 1.7;
+  margin-top: 0.4rem;
+}
+
+/* ==========================================================================
+   Active Nav Link (scroll spy)
+   ========================================================================== */
+.navbar .navbar-nav a.active {
+  color: var(--text-primary);
+}
+
+.navbar .navbar-nav a.active::after {
+  transform: scaleX(1);
+}
+
+/* ==========================================================================
    Contact Section
    ========================================================================== */
 .contact {
@@ -886,19 +1123,22 @@ body {
 
 .info-card {
   background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
   border: 1px solid var(--glass-border);
   padding: 1.8rem;
-  border-radius: 12px;
+  border-radius: 16px;
   display: flex;
   align-items: center;
   gap: 1.5rem;
   transition: var(--transition-normal);
+  box-shadow: var(--glass-shadow), inset 0 1px 0 rgba(255,255,255,0.05);
 }
 
 .info-card:hover {
   border-color: var(--border-glow);
   transform: translateX(5px);
-  box-shadow: 0 4px 20px var(--neon-cyan-hover-glow);
+  box-shadow: 0 8px 30px var(--neon-cyan-hover-glow), inset 0 1px 0 rgba(255,255,255,0.08);
 }
 
 .info-icon {
@@ -1344,4 +1584,23 @@ footer {
 
 .animate-spin {
   animation: spin 1s linear infinite;
+}
+
+/* ==========================================================================
+   Organization Logo Styles
+   ========================================================================== */
+
+/* Img logo di dalam .org-card-icon — background asli tetap terjaga */
+.org-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+  transition: transform var(--transition-normal), filter var(--transition-normal);
+  filter: brightness(1.05);
+}
+
+.org-card:hover .org-logo-img {
+  transform: scale(1.1);
+  filter: brightness(1.2) drop-shadow(0 0 6px rgba(0, 242, 254, 0.4));
 }

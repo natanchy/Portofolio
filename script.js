@@ -134,7 +134,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (filter === "all" || category === filter) {
           card.style.display = "flex";
-          // Memicu reflow untuk efek transisi fade-in
+          // reflow untuk efek transisi fade-in
           setTimeout(() => {
             card.style.opacity = "1";
             card.style.transform = "scale(1)";
@@ -150,7 +150,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Animasi Scroll (Intersection Observer)
   const observerOptions = {
     threshold: 0.15,
     rootMargin: "0px 0px -50px 0px",
@@ -160,16 +159,16 @@ document.addEventListener("DOMContentLoaded", () => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.classList.add("appear");
-        observer.unobserve(entry.target); // Hanya menembakkan animasi sekali saja
+        observer.unobserve(entry.target);
       }
     });
   }, observerOptions);
 
-  // Ambil semua section dan card untuk di-observe
+
   const animateElements = document.querySelectorAll(
     "section, .cert-card, .project-card, .info-card, .contact-form"
   );
-  
+
   animateElements.forEach((el) => {
     el.classList.add("fade-on-scroll");
     observer.observe(el);
@@ -180,24 +179,24 @@ document.addEventListener("DOMContentLoaded", () => {
   if (contactForm) {
     contactForm.addEventListener("submit", async (e) => {
       e.preventDefault();
-      
+
       const submitBtn = contactForm.querySelector(".btn-submit");
       const originalBtnText = submitBtn.innerHTML;
-      
+
       // Ubah button state menjadi loading
       submitBtn.disabled = true;
       submitBtn.innerHTML = `Sending... <i data-feather="loader" class="animate-spin"></i>`;
       if (typeof feather !== "undefined") {
         feather.replace();
       }
-      
+
       const formData = {
         name: document.querySelector("#contact-name").value,
         email: document.querySelector("#contact-email").value,
         subject: document.querySelector("#contact-subject").value,
         message: document.querySelector("#contact-message").value,
       };
-      
+
       try {
         const response = await fetch("https://formsubmit.co/ajax/natancahyo9@gmail.com", {
           method: "POST",
@@ -207,10 +206,10 @@ document.addEventListener("DOMContentLoaded", () => {
           },
           body: JSON.stringify(formData)
         });
-        
+
         const result = await response.json();
         console.log("FormSubmit response:", result);
-        
+
         if (response.ok && (result.success === "true" || result.success === true)) {
           showToast("Message sent successfully!", "success");
           contactForm.reset();
@@ -239,26 +238,26 @@ document.addEventListener("DOMContentLoaded", () => {
       container.className = "toast-container";
       document.body.appendChild(container);
     }
-    
+
     const toast = document.createElement("div");
     toast.className = `toast toast-${type}`;
-    
+
     const iconName = type === "success" ? "check-circle" : "alert-circle";
     toast.innerHTML = `
       <span class="toast-icon"><i data-feather="${iconName}"></i></span>
       <span class="toast-message">${message}</span>
     `;
-    
+
     container.appendChild(toast);
     if (typeof feather !== "undefined") {
       feather.replace();
     }
-    
+
     // Animate in
     setTimeout(() => {
       toast.classList.add("show");
     }, 10);
-    
+
     // Auto remove after 5 seconds
     setTimeout(() => {
       toast.classList.remove("show");
@@ -267,5 +266,30 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 400);
     }, 5000);
   }
+  // Scroll Spy — Active Nav Link Highlighting
+  const navLinks = document.querySelectorAll('.navbar-nav a[href^="#"]');
+  const sections = document.querySelectorAll('section[id]');
+
+  const spyObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          navLinks.forEach((link) => {
+            link.classList.toggle(
+              'active',
+              link.getAttribute('href') === `#${id}`
+            );
+          });
+        }
+      });
+    },
+    {
+      rootMargin: '-40% 0px -55% 0px',
+      threshold: 0,
+    }
+  );
+
+  sections.forEach((section) => spyObserver.observe(section));
 });
 
